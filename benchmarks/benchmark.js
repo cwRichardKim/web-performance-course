@@ -2,12 +2,15 @@ const { performance } = require('perf_hooks');
 
 // SETUP 🏁
 
-let iterations = 1e7;
+let iterations = 1e6;
 
-const a = 1;
-const b = 2;
-
-const add = (x, y) => x + y;
+class Point {
+  constructor(x, y, z) {
+    this.x = x;
+    this.z = z;
+    this.y = y;
+  }
+}
 
 // 🔚 SETUP
 
@@ -16,8 +19,19 @@ performance.mark('start');
 // EXERCISE 💪
 
 while (iterations--) {
-  add(a, b);
+  const point = new Point(1, 2, 3);
+  delete point.z;
+  // point.y = undefined;
+  JSON.stringify(point);
 }
+
+// add('foo', 'bar');
+
+// iterations = 1e7;
+
+// while (iterations--) {
+//   add(a, b);
+// }
 
 // 🔚 EXERCISE
 
